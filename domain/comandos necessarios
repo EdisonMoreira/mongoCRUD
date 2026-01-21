@@ -1,0 +1,10 @@
+comandos necessarios
+
+pip install motor fastapi uvicorn pydantic python-dotenv
+
+pip install python-dotenv
+
+export MONGO_URI="mongodb://localhost:27017"
+export MONGO_DB="app_db"
+
+

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+motor
+pydantic
+python-dotenv
+pydantic[email]
+jinja2
+python-multipart
+certifi

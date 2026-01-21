@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Usuário</title>
+    <style>
+        /* --- Mesma Base do index.html --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centraliza verticalmente na tela */
+            margin: 0;
+        }
+
+        /* Container estilo "Cartão" */
+        .form-container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px; /* Não deixa ficar muito largo */
+        }
+
+        h1 {
+            color: #009879;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        /* --- Estilo dos Inputs --- */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Espaço entre os campos */
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+        }
+
+        input:focus {
+            border-color: #009879;
+            outline: none;
+        }
+
+        /* --- Botões e Links --- */
+        button {
+            background-color: #009879;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #007f67;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .back-link:hover {
+            color: #009879;
+            text-decoration: underline;
+        }
+    </style>
+    
+</head>
+<body>
+   
+    <div class="form-container">
+        <h1>Novo Usuário</h1>
+        
+        <form action="/api/users" method="post">
+            <div>
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Ex: João Silva" required>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="joao@exemplo.com" required>
+            </div>
+
+            <div>
+                <label for="released">Data de Lançamento</label>
+                <input type="datetime-local" id="released" name="released" required>
+            </div>
+
+            <div>
+                <label for="year">Ano</label>
+                <input type="number" id="year" name="year" placeholder="2024" required>
+            </div>
+            
+            <button type="submit">Salvar Usuário</button>
+        </form>
+
+        <a href="/" class="back-link">← Voltar para a lista</a>
+    </div>
+    
+</body>
+</html>

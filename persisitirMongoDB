@@ -1,0 +1,7 @@
+project/
+├── app/
+│   └── main.py
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── .env

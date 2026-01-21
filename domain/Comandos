@@ -1,0 +1,27 @@
+Comandos 
+
+mongodb+srv://alfacentauri:Manga2028&@clusteraprender.xtrjxzz.mongodb.net/
+
+Manga2028
+
+gcloud auth login
+
+gcloud config set project ivory-cycle-279202
+
+gcloud artifacts repositories create mongocrud-repo
+ \
+    --repository-format=docker \
+    --location=us-central1 \
+    --description="Repositorio Docker do MongoCRUD"
+
+Resumo da Regra de Ouro do Cloud Run: Alterou qualquer arquivo (HTML, Python, CSS)? -> Tem de fazer Build e depois Deploy.
+
+ gcloud builds submit --tag us-central1-docker.pkg.dev/ivory-cycle-279202/mongocrud-repo/api-mongocrud:v1 .
+ 
+ gcloud run deploy api-mongocrud \
+    --image us-central1-docker.pkg.dev/ivory-cycle-279202/mongocrud-repo/api-mongocrud:v1 \
+    --platform managed \
+    --region us-central1 \
+    --allow-unauthenticated \
+    --set-env-vars MONGO_URI="mongodb+srv://alfacentauri:manga2029@clusteraprender.xtrjxzz.mongodb.net/",MONGO_DB="app_db"
+

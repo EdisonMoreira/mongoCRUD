@@ -1,0 +1,11 @@
+app/
+├── main.py
+├── domain/
+│   └── user.py
+├── persistence/
+│   ├── repository.py
+│   └── mongo/
+│       ├── client.py
+│       └── user_repo.py
+└── schemas/
+    └── user.py

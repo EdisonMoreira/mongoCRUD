@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Aprender CRUD Dinâmico MongoDB</title>
+    <style>
+        /* Estilo Geral */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 { color: #009879; }
+        
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #009879;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        a:hover { background-color: #007f67; }
+
+        /* Estilo da Tabela */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* Sombra suave */
+        }
+
+        thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dddddd;
+            /* O SEGREDO DO ALINHAMENTO: */
+            vertical-align: top; 
+        }
+
+        /* Coluna de ID menor e com fonte monoespaçada para leitura técnica */
+        td.col-id {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85em;
+            color: #666;
+            width: 10%; /* Segura a largura */
+        }
+
+        /* Efeito Zebra nas linhas */
+        tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        /* Melhorar a lista de dados adicionais */
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Lista dos Usuários</h1>
+
+    <p><a href="/create">Cadastrar Novo Usuário</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ano</th>
+                <th>Dados Adicionais</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.year }}</td>
+                <td>
+                    <ul>
+                        {# Loop dinâmico para campos que não são os básicos #}
+                        {% for chave, valor in user.__dict__.items() %}
+                            {% if chave not in ['id', 'name', 'email', 'released', 'year'] %}
+                                <li><strong>{{ chave }}:</strong> {{ valor }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
